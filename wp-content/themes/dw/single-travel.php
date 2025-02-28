@@ -132,6 +132,13 @@
                     <div class="travel__rating" data-score="<?= get_field('rating'); ?>">
                         <p class="sro">Ce voyage obtient l'appréciation de <?= get_field('rating'); ?> étoiles sur 5</p>
                     </div>
+<div class="travel__dates">
+    <?php if(get_field('return')): ?>
+    <p>Du <time datetime="<?= date('c', get_field('departure')); ?>"><?= date_i18n('d F Y', get_field('departure')); ?></time> au <time datetime="<?= date('c', get_field('return')); ?>"><?= date_i18n('d F Y', get_field('return')); ?></time></p>
+    <?php else: ?>
+    <p>Depuis le <time datetime="<?= date('c', get_field('departure')); ?>"><?= date_i18n('d F Y', get_field('departure')); ?></time>.</p>
+    <?php endif; ?>
+</div>
                 </div>
                 <figure class="travel__back">
                     <?= get_the_post_thumbnail(size: 'travel-header', attr: ['class' => 'travel__cover']); ?>
