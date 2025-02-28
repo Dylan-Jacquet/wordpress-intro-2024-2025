@@ -129,8 +129,8 @@
                 <div class="travel__head">
                     <h2 class="travel__title"><?= get_the_title(); ?></h2>
                     <p class="travel__excerpt"><?= get_the_excerpt(); ?></p>
-                    <div class="travel__rating" data-score="4">
-                        <p class="sro">Ce voyage obtient l'appréciation de 4 étoiles sur 5</p>
+                    <div class="travel__rating" data-score="<?= get_field('rating'); ?>">
+                        <p class="sro">Ce voyage obtient l'appréciation de <?= get_field('rating'); ?> étoiles sur 5</p>
                     </div>
                 </div>
                 <figure class="travel__back">
