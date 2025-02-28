@@ -1,5 +1,8 @@
 <?php
 
+// Charger les champs ACF exportés :
+include_once('fields.php');
+
 // Gutenberg est le nouvel éditeur de contenu propre à Wordpress
 // il ne nous intéresse pas pour l'utilisation du thème que nous 
 // allons créer. On va donc le désactiver :
