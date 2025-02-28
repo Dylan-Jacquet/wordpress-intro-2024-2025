@@ -1,5 +1,8 @@
 <?php
 
+// Charger les champs ACF exportés :
+include_once('fields.php');
+
 // Gutenberg est le nouvel éditeur de contenu propre à Wordpress
 // il ne nous intéresse pas pour l'utilisation du thème que nous 
 // allons créer. On va donc le désactiver :
@@ -47,6 +50,26 @@ register_post_type('travel', [
     ],
     'supports' => ['title','excerpt','editor','thumbnail'],
 ]);
+
+// Paramétrer des tailles d'images pour le générateur de thumbnails de Wordpress :
+
+// Sans recadrage :
+add_image_size('travel-side', 420, 420); 
+// Avec recadrage :
+add_image_size('travel-header', 1920, 400, true);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
