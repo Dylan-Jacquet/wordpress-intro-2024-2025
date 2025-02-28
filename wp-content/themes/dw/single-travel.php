@@ -129,16 +129,19 @@
                 <div class="travel__head">
                     <h2 class="travel__title"><?= get_the_title(); ?></h2>
                     <p class="travel__excerpt"><?= get_the_excerpt(); ?></p>
-                    <div class="travel__rating" data-score="<?= get_field('rating'); ?>">
-                        <p class="sro">Ce voyage obtient l'appréciation de <?= get_field('rating'); ?> étoiles sur 5</p>
+                    <div class="travel__rating" data-score="<?= $rating = get_field('rating'); ?>">
+                        <p class="sro">Ce voyage obtient l'appréciation de <?= $rating; ?> étoiles sur 5</p>
                     </div>
-<div class="travel__dates">
-    <?php if(get_field('return')): ?>
-    <p>Du <time datetime="<?= date('c', get_field('departure')); ?>"><?= date_i18n('d F Y', get_field('departure')); ?></time> au <time datetime="<?= date('c', get_field('return')); ?>"><?= date_i18n('d F Y', get_field('return')); ?></time></p>
-    <?php else: ?>
-    <p>Depuis le <time datetime="<?= date('c', get_field('departure')); ?>"><?= date_i18n('d F Y', get_field('departure')); ?></time>.</p>
-    <?php endif; ?>
-</div>
+                    <div class="travel__dates">
+                        <?php
+                        $departure = get_field('departure');
+                        $return = get_field('return');
+                        if($return): ?>
+                        <p>Du <time datetime="<?= date('c', $departure); ?>"><?= date_i18n('d F Y', $departure); ?></time> au <time datetime="<?= date('c', $return); ?>"><?= date_i18n('d F Y', $return); ?></time></p>
+                        <?php else: ?>
+                        <p>Depuis le <time datetime="<?= date('c', $departure); ?>"><?= date_i18n('d F Y', $departure); ?></time>.</p>
+                        <?php endif; ?>
+                    </div>
                 </div>
                 <figure class="travel__back">
                     <?= get_the_post_thumbnail(size: 'travel-header', attr: ['class' => 'travel__cover']); ?>
@@ -148,17 +151,21 @@
             <div class="travel__container">
                 <aside class="travel__ingredients">
                     <div>
-                        <h3>Aperçu</h3>
-                        <p>À compléter</p>
+                        <h3>Points-clés</h3>
+                        <div class="wysiwyg">
+                            <?= get_field('keypoints'); ?>
+                        </div>
                     </div>
                     <figure class="travel__fig">
-                        <?= get_the_post_thumbnail(size: 'travel-side', attr: ['class' => 'travel__img']); ?>
+                        <?= wp_get_attachment_image(get_field('side_image'), 'travel-side', attr: ['class' => 'travel__img']); ?>
                     </figure>
                 </aside>
 
                 <section class="travel__steps">
                     <h3>Récit de voyage</h3>
-                    <div><?= get_the_content(); ?></div>
+                    <div class="wysiwyg">
+                        <?= get_field('story'); ?>
+                    </div>
                 </section>
             </div>
         </div>
