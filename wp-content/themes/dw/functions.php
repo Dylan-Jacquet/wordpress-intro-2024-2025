@@ -58,8 +58,10 @@ add_image_size('travel-side', 420, 420);
 // Avec recadrage :
 add_image_size('travel-header', 1920, 400, true);
 
+// Enregistrer les menus de navigation en fonction de l'endroit où ils sont exploités :
 
-
+register_nav_menu('header', 'Le menu de navigation principal en haut de la page.');
+register_nav_menu('footer', 'Le menu de navigation de fin de page.');
 
 
 
