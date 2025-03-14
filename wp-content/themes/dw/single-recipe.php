@@ -47,6 +47,31 @@
                 <div>
                     <h3>Ingrédients</h3>
                     <p>À compléter</p>
+                    <section>
+                        <h4>Quand manger&nbsp;?</h4>
+                        <?php if($courses = get_the_terms(get_the_ID(), 'course')): ?>
+                        <ul>
+                            <?php foreach($courses as $term): ?>
+                            <li><?= $term->name; ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <?php else: ?>
+                        <p>Quand vous voulez&nbsp;!</p>
+                        <?php endif; ?>
+                    </section>
+
+                    <section>
+                        <h4>Pour quel régime&nbsp;?</h4>
+                        <?php if($diets = get_the_terms(get_the_ID(), 'diet')): ?>
+                        <ul>
+                            <?php foreach($diets as $term): ?>
+                            <li><?= $term->name; ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <?php else: ?>
+                        <p>Aucun régime particulier</p>
+                        <?php endif; ?>
+                    </section>
                 </div>
                 <figure class="recipe__fig">
                     <?= get_the_post_thumbnail(size: 'large', attr: ['class' => 'recipe__img']); ?>
