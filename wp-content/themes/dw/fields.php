@@ -6,12 +6,67 @@ add_action( 'acf/include_fields', function() {
     }
 
     acf_add_local_field_group( array(
-    'key' => 'group_67c1776e73c20',
-    'title' => 'Travel fields (main)',
+    'key' => 'group_67d3ecec66cff',
+    'title' => 'Navigation menu items',
     'fields' => array(
         array(
-            'key' => 'field_67c1776e33a91',
-            'label' => 'Appréciation',
+            'key' => 'field_67d3ecec5c1ff',
+            'label' => 'Icone',
+            'name' => 'icon',
+            'aria-label' => '',
+            'type' => 'select',
+            'instructions' => '',
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'choices' => array(
+                'home' => 'Maison',
+                'plane' => 'Avion',
+                'pot' => 'Casserole',
+                'user' => 'Personnage',
+                'mail' => 'Enveloppe',
+            ),
+            'default_value' => false,
+            'return_format' => 'value',
+            'multiple' => 0,
+            'allow_null' => 0,
+            'allow_in_bindings' => 0,
+            'ui' => 0,
+            'ajax' => 0,
+            'placeholder' => '',
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'nav_menu_item',
+                'operator' => '==',
+                'value' => 'location/header',
+            ),
+        ),
+    ),
+    'menu_order' => 0,
+    'position' => 'normal',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => true,
+    'description' => '',
+    'show_in_rest' => 0,
+) );
+
+    acf_add_local_field_group( array(
+    'key' => 'group_67c1c24dc65a6',
+    'title' => 'Trip fields (main)',
+    'fields' => array(
+        array(
+            'key' => 'field_67c1c24d5a89f',
+            'label' => 'Appréciation du voyage',
             'name' => 'rating',
             'aria-label' => '',
             'type' => 'select',
@@ -41,8 +96,8 @@ add_action( 'acf/include_fields', function() {
             'placeholder' => '',
         ),
         array(
-            'key' => 'field_67c1793f33a92',
-            'label' => 'Date de départ',
+            'key' => 'field_67c1c3fb5a8a0',
+            'label' => 'Date de début du voyage',
             'name' => 'departure',
             'aria-label' => '',
             'type' => 'date_picker',
@@ -60,12 +115,12 @@ add_action( 'acf/include_fields', function() {
             'allow_in_bindings' => 0,
         ),
         array(
-            'key' => 'field_67c179d633a93',
-            'label' => 'Date de retour',
+            'key' => 'field_67c1c4ae5a8a1',
+            'label' => 'Date de fin du voyage',
             'name' => 'return',
             'aria-label' => '',
             'type' => 'date_picker',
-            'instructions' => 'Laissez vide si vous n\'êtes pas encore revenu.',
+            'instructions' => '',
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
@@ -79,7 +134,7 @@ add_action( 'acf/include_fields', function() {
             'allow_in_bindings' => 0,
         ),
         array(
-            'key' => 'field_67c18d9c24679',
+            'key' => 'field_67c1d5775fa19',
             'label' => 'Récit de voyage',
             'name' => 'story',
             'aria-label' => '',
@@ -105,7 +160,7 @@ add_action( 'acf/include_fields', function() {
             array(
                 'param' => 'post_type',
                 'operator' => '==',
-                'value' => 'travel',
+                'value' => 'trip',
             ),
         ),
     ),
@@ -123,16 +178,16 @@ add_action( 'acf/include_fields', function() {
 ) );
 
     acf_add_local_field_group( array(
-    'key' => 'group_67c1904255e73',
-    'title' => 'Travel fields (side)',
+    'key' => 'group_67c1d72755f71',
+    'title' => 'Trip fields (side)',
     'fields' => array(
         array(
-            'key' => 'field_67c1904262fc8',
-            'label' => 'Image sur le côté',
-            'name' => 'side_image',
+            'key' => 'field_67c1d727a31b0',
+            'label' => 'Image affichée sur le côté',
+            'name' => 'side_img',
             'aria-label' => '',
             'type' => 'image',
-            'instructions' => 'Préférez une image carrée. Un recadrage automatique aura lieu.',
+            'instructions' => '',
             'required' => 1,
             'conditional_logic' => 0,
             'wrapper' => array(
@@ -153,8 +208,8 @@ add_action( 'acf/include_fields', function() {
             'preview_size' => 'medium',
         ),
         array(
-            'key' => 'field_67c18d2924678',
-            'label' => 'Points clés',
+            'key' => 'field_67c1d4e45fa18',
+            'label' => 'Points-clés',
             'name' => 'keypoints',
             'aria-label' => '',
             'type' => 'wysiwyg',
@@ -179,11 +234,11 @@ add_action( 'acf/include_fields', function() {
             array(
                 'param' => 'post_type',
                 'operator' => '==',
-                'value' => 'travel',
+                'value' => 'trip',
             ),
         ),
     ),
-    'menu_order' => 0,
+    'menu_order' => 100,
     'position' => 'side',
     'style' => 'seamless',
     'label_placement' => 'top',
