@@ -9,7 +9,7 @@
     <header>
         <h1><?= get_bloginfo('name') ?></h1>
         <p><?= get_bloginfo('description') ?></p>
-        
+
         <nav class="nav">
             <h2 class="sro">Navigation pricinpale</h2>
             <ul class="nav__container">
@@ -19,6 +19,17 @@
                 </li>
                 <?php endforeach; ?>
             </ul>
+
+          <div class="languages">
+            <ul class="languages__container">
+              <?php foreach (pll_the_languages(['raw' => true]) as $lang): ?>
+                <li class="languages__item<?= $lang['current_lang'] ? ' languages__item--current' : '' ?>">
+                  <a href="<?= $lang['url'] ?>" lang="<?= $lang['locale'] ?>" hreflang="<?= $lang['locale'] ?>"
+                     class="languages__link"><?= $lang['name'] ?></a>
+                </li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
         </nav>
     </header>
     <main>
