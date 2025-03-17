@@ -3,14 +3,25 @@
 // Charger les champs ACF exportés :
 include_once('fields.php');
 
+/**
+ * Charge le domaine de traduction du thème.
+ *
+ * Cette fonction permet de charger les fichiers de traduction situés
+ * dans le dossier `locales` du thème actif. Elle utilise la fonction
+ * `load_theme_textdomain()` pour associer le domaine de traduction `hepl-trad`
+ * aux fichiers de langue présents dans le répertoire spécifié.
+ *
+ * @return void
+ */
 function hepl_trad_load_textdomain(): void
 {
   load_theme_textdomain('hepl-trad', get_template_directory() . '/locales');
 }
 
+// Exécute la fonction lors de l'initialisation du thème.
 add_action('after_setup_theme', 'hepl_trad_load_textdomain');
 
-function __hepl(string $translation, array $replacements = [])
+function __hepl(string $translation, array $replacements = []): array|string|null
 {
 // 1. Récupérer la traduction de la phrase présente dans $translation
   $base = __($translation, 'hepl-trad');
@@ -23,6 +34,23 @@ function __hepl(string $translation, array $replacements = [])
 
 // 3. Retourner la traduction complète.
   return $base;
+}
+
+/**
+ * Récupère la valeur d'un champ ACF d'une page d'option pour la langue courante.
+ *
+ * Cette fonction utilise Advanced Custom Fields PRO (ACF) et Polylang
+ * pour récupérer la valeur d'un champ d'option spécifique en fonction
+ * de la langue active sur le site.
+ *
+ * @param string $field Le nom du champ ACF à récupérer.
+ * @return mixed La valeur du champ, ou `false` si le champ n'existe pas.
+ *
+ *
+ */
+function get__option($field): mixed
+{
+  return get_field($field, pll_current_language('slug'));
 }
 
 // Gutenberg est le nouvel éditeur de contenu propre à Wordpress
@@ -140,12 +168,12 @@ function dw_get_navigation_links(string $location): array
     }
 
     // Retourner ce tableau d'objets (liens).
-
     return $links;
 }
 
 // Créer une fonction qui permet de créer des pages d'options ACF pour le thème :
-function create_site_options_page() {
+function create_site_options_page(): void
+{
   if (function_exists('acf_add_options_page')) {
     // Page principale
     acf_add_options_page([
@@ -156,18 +184,15 @@ function create_site_options_page() {
       'redirect'    => false
     ]);
 
-    // Sous-pages
-    acf_add_options_sub_page([
-      'page_title'  => 'Company Settings',
-      'menu_title'  => 'Company',
-      'parent_slug' => 'site-options',
-    ]);
-
-    acf_add_options_sub_page([
-      'page_title'  => 'SEO Settings',
-      'menu_title'  => 'SEO',
-      'parent_slug' => 'site-options',
-    ]);
+    foreach (['fr', 'en'] as $lang) {
+      acf_add_options_sub_page([
+        'page_title' => sprintf(__('Options du site %s', 'hepl-trad'), strtoupper($lang)),
+        'menu_title' => sprintf(__('Options du site %s', 'hepl-trad'), strtoupper($lang)),
+        'menu_slug'  => 'site-options-' . $lang,
+        'post_id'    => $lang,
+        'parent'     => 'site-options',
+      ]);
+    }
   }
 }
 

@@ -2,13 +2,13 @@
 
 <style type="text/css">
     .sro {
-        position: absolute; 
-        overflow: hidden; 
-        clip: rect(0 0 0 0); 
-        height: 1px; width: 1px; 
-        margin: -1px; 
-        padding: 0; 
-        border: 0; 
+        position: absolute;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        height: 1px; width: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
     }
     .travel {
     }
@@ -120,7 +120,7 @@
     }
 </style>
 
-    <?php 
+    <?php
     // On ouvre "la boucle" (The Loop), la structure de contrôle
     // de contenu propre à Wordpress:
     if(have_posts()): while(have_posts()): the_post(); ?>
@@ -136,6 +136,7 @@
                         <?php
                         $departure = get_field('departure');
                         $return = get_field('return');
+
                         if($return): ?>
                         <p>Du <time datetime="<?= date('c', $departure); ?>"><?= date_i18n('d F Y', $departure); ?></time> au <time datetime="<?= date('c', $return); ?>"><?= date_i18n('d F Y', $return); ?></time></p>
                         <?php else: ?>

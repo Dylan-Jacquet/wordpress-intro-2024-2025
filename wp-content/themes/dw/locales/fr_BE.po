@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-03-17 09:59+0100\n"
-"PO-Revision-Date: 2025-03-17 09:59+0100\n"
+"POT-Creation-Date: 2025-03-17 14:36+0100\n"
+"PO-Revision-Date: 2025-03-17 14:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_BE\n"
@@ -14,10 +14,18 @@ msgstr ""
 "X-Poedit-KeywordsList: __hepl\n"
 "X-Poedit-SearchPath-0: .\n"
 
+#: front-page.php:80
+msgid "Bienvenue sur mon site&nbsp;!"
+msgstr "Bienvenue sur mon site&nbsp;!"
+
+#: header.php:14
+msgid "Navigation principale"
+msgstr "Navigation principale"
+
 #: single-recipe.php:48
 msgid "Ingrédients"
-msgstr ""
+msgstr "Ingrédients"
 
 #: single-recipe.php:49
 msgid "À compléter"
-msgstr ""
+msgstr "À compléter"
