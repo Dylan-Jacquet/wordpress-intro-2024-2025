@@ -32,7 +32,7 @@
     }
 </style>
 
-    <?php 
+    <?php
     // On ouvre "la boucle" (The Loop), la structure de contrôle
     // de contenu propre à Wordpress:
     if(have_posts()): while(have_posts()): the_post(); ?>
@@ -45,8 +45,8 @@
 
             <aside class="recipe__ingredients">
                 <div>
-                    <h3>Ingrédients</h3>
-                    <p>À compléter</p>
+                    <h3><?= __hepl('Ingrédients') ?></h3>
+                    <p><?= __hepl('À compléter') ?></p>
                     <section>
                         <h4>Quand manger&nbsp;?</h4>
                         <?php if($courses = get_the_terms(get_the_ID(), 'course')): ?>
@@ -133,13 +133,13 @@
             width: 100%;
         }
         .sro {
-        position: absolute; 
-        overflow: hidden; 
-        clip: rect(0 0 0 0); 
-        height: 1px; width: 1px; 
-        margin: -1px; 
-        padding: 0; 
-        border: 0; 
+        position: absolute;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        height: 1px; width: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
         }
     </style>
     <section class="related">
