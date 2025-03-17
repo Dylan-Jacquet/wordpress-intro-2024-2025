@@ -1,13 +1,13 @@
 <?php get_header(); ?>
     <style type="text/css">
         .sro {
-            position: absolute; 
-            overflow: hidden; 
-            clip: rect(0 0 0 0); 
-            height: 1px; width: 1px; 
-            margin: -1px; 
-            padding: 0; 
-            border: 0; 
+            position: absolute;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            height: 1px; width: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
         }
         .trips {
             display: flex;
@@ -68,9 +68,9 @@
     </style>
 
     <aside>
-        <h2>Bienvenue sur mon site&nbsp;!</h2>
+        <h2><?= __hepl('Bienvenue sur mon site&nbsp;!') ?></h2>
     </aside>
-    <?php 
+    <?php
     // On ouvre "la boucle" (The Loop), la structure de contrôle
     // de contenu propre à Wordpress:
     if(have_posts()): while(have_posts()): the_post(); ?>
