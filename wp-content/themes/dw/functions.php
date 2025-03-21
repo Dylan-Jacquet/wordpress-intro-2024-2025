@@ -127,6 +127,19 @@ function dw_get_navigation_links(string $location): array
     return $links;
 }
 
+// Ajouter un post-type custom pour sauvegarder les messages de contact
+
+register_post_type('contact_message', [
+    'label' => 'Messages de contact',
+    'description' => 'Les envois de formulaire via la page de contact',
+    'menu_position' => 10,
+    'menu_icon' => 'dashicons-email',
+    'public' => false,
+    'show_ui' => true,
+    'has_archive' => false,
+    'supports' => ['title','editor'],
+]);
+
 // Ajouter la fonctionnalité "POST" pour un formulaire de contact personnalisé :
 add_action('admin_post_dw_submit_contact_form', 'dw_handle_contact_form');
 add_action('admin_post_nopriv_dw_submit_contact_form', 'dw_handle_contact_form');
