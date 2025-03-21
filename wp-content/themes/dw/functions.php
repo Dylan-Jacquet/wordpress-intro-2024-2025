@@ -122,6 +122,14 @@ function dw_get_navigation_links(string $location): array
     return $links;
 }
 
+// Ajouter la fonctionnalité "POST" pour un formulaire de contact personnalisé :
+add_action('admin_post_dw_submit_contact_form', 'dw_handle_contact_form');
+add_action('admin_post_nopriv_dw_submit_contact_form', 'dw_handle_contact_form');
+
+function dw_handle_contact_form()
+{
+    var_dump($_POST); die();
+}
 
 
 
