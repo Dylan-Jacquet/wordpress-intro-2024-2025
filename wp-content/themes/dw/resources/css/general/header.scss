@@ -1,0 +1,12 @@
+body {
+  color: pink;
+  text-decoration-color: red;
+
+  .body {
+    color: red;
+
+    &__test {
+      color: green;
+    }
+  }
+}
