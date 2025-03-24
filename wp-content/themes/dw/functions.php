@@ -66,6 +66,7 @@ function get__option($field): mixed
 add_filter( 'use_block_editor_for_post', '__return_false' );
 // Disable Gutenberg for widgets.
 add_filter( 'use_widgets_block_editor', '__return_false' );
+
 // Disable default front-end styles.
 add_action( 'wp_enqueue_scripts', function() {
     // Remove CSS on the front end.
@@ -75,6 +76,28 @@ add_action( 'wp_enqueue_scripts', function() {
     // Remove inline global CSS on the front end.
     wp_dequeue_style( 'global-styles' );
 }, 20 );
+
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('wp_head', 'wp_print_comments');
+remove_action('wp_head', 'wp_oembed_add_discovery_links');
+remove_action('wp_head', 'wp_oembed_add_host_js');
+remove_action('wp_head', 'rest_output_link_wp_head');
+remove_action('wp_head', 'wp_generator');
+
+$manifestPath = get_theme_file_path('public/.vite/manifest.json');
+
+if (file_exists($manifestPath)) {
+  $manifest = json_decode(file_get_contents($manifestPath), true);
+
+  if (isset($manifest['wp-content/themes/dw/resources/js/main.js'])) {
+    wp_enqueue_script('dw', get_theme_file_uri('public/' . $manifest['wp-content/themes/dw/resources/js/main.js']['file']), [], null, true);
+  }
+
+  if (isset($manifest['wp-content/themes/dw/resources/css/styles.scss'])) {
+    wp_enqueue_style('dw', get_theme_file_uri('public/' . $manifest['wp-content/themes/dw/resources/css/styles.scss']['file']));
+  }
+}
 
 // Activer l'utilisation des vignettes (image de couverture) sur nos post types:
 add_theme_support('post-thumbnails', ['recipe','travel']);
