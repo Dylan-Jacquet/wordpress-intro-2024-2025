@@ -9,3 +9,4 @@ wp-content/themes/*
 !wp-content/themes/dw/**/*
 !vite.config.js
 !package.json
+!postcss.config.js
