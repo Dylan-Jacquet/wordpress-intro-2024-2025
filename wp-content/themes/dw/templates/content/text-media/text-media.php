@@ -1,39 +1,37 @@
+<?php $supline = get_sub_field('supline') ?>
 <?php $headline = get_sub_field('headline') ?>
+<?php $subline = get_sub_field('subline') ?>
 <?php $text = get_sub_field('text') ?>
-<?php $link = get_sub_field('link') ?>
-<?php $image = get_sub_field('background_image') ?>
+<?php $cta = get_sub_field('cta') ?>
+<?php $image = get_sub_field('image') ?>
 <?php $media_position = get_sub_field('media_position') ?>
 <?php $media_type = get_sub_field('media_type') ?>
 
-<section class="text-media text-media__position--<?= $media_position ?>">
+<section class="text-media">
   <div class="text-media__content-container">
-    <?php if ($headline !== ""): ?>
-      <h2 class="text-media__content-title">
-        <?= $headline ?>
-      </h2>
-    <?php endif; ?>
+    <p class="text-media__content-supline">
+      <?= $supline ?>
+    </p>
+    <h2 class="text-media__content-headline">
+      <?= $headline ?>
+    </h2>
+    <p class="text-media__content-subline">
+      <?= $supline ?>
+    </p>
     <div class="text-media__content-text">
       <?= $text ?>
     </div>
     <a class="text-media__content-link"
-       href="<?= $link['url'] ?>"
-       target="<?= $link['target'] === "_blank" ?: "_self" ?>">
-      <?= $link['title'] ?>
+       href="<?= $cta['url'] ?>"
+       title="<?= $cta['title'] ?>">
+      <?= $cta['title'] ?>
     </a>
   </div>
-  <?php if ($media_type === 'image'): ?>
-    <img class="text-media__image" src="<?= $image['url'] ?>"
+  <div class="text-media__position text-media__position--<?= $media_position ?>">
+    <img class="text-media__image"
+         src="<?= $image['url'] ?>"
          alt="<?= $image['alt'] ?>"
          width="<?= $image['width'] ?>"
          height="<?= $image['height'] ?>">
-  <?php elseif ($media_type === 'video'): ?>
-    <video class="text-media__video">
-
-    </video>
-  <?php elseif ($media_type === 'slider'): ?>
-    <div>
-
-    </div>
-  <?php endif; ?>
+  </div>
 </section>
-

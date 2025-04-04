@@ -1,8 +1,8 @@
 <?php /* Template Name: Template Flexible */ ?>
 
-<?php get_header() ?>
+<?php get_header(); ?>
 
-<?php include('templates/partials/stage.php'); ?>
-<?php include('templates/flexible.php'); ?>
+<?php include ('templates/content/stage/stage.php') ?>
+<?php include ('templates/content/flexible.php') ?>
 
-<?php get_footer() ?>
+<?php get_footer(); ?>
