@@ -3,6 +3,7 @@ import {globSync} from "glob";
 import * as fs from "fs";
 
 export default defineConfig({
+  base: "/wp-content/themes/dw/public/",
   plugins: [
     {
       name: "bundle.js",
@@ -30,6 +31,6 @@ export default defineConfig({
       },
     },
     assetsInlineLimit: 0,
-    target: ["es2015"],
+    target: ["es2015"], // Rendre compatible le JAVASCRIPT
   },
 });

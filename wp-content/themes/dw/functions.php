@@ -114,12 +114,6 @@ function enqueue_assets_from_vite_manifest(): void
 }
 //enqueue_assets_from_vite_manifest();
 
-// Function utilitaire permettant de charger le fichier contenant tous les imports de police hors du css.
-function dw_fonts(): string
-{
-  return get_template_directory_uri() . '/resources/fonts/fonts.css';
-}
-
 // 1. Charger un fichier "public" (asset/image/css/script/...) pour le front-end sans que cela ne s'applique à l'admin.
 function dw_asset(string $file): string
 {
