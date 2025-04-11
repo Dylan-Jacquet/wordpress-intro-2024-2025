@@ -355,6 +355,21 @@ function create_site_options_page(): void
 
 add_action('acf/init', 'create_site_options_page');
 
+/**
+ * Génère une image responsive au format <picture> avec les attributs srcset et sizes.
+ *
+ * Cette fonction accepte différents formats d'entrée pour l'image (ID, tableau associatif ou URL),
+ * et retourne un bloc HTML contenant une balise <picture> incluant une balise <img>.
+ * Elle utilise les fonctions natives de WordPress pour récupérer les différentes tailles d'image
+ * et ainsi permettre au navigateur de choisir la version la plus adaptée à l'affichage.
+ *
+ * @param mixed $image    ID de l'image, tableau contenant la clé 'ID' ou URL de l'image.
+ * @param array $settings Tableau d'options complémentaires :
+ *                        - 'lazy'    => attribut loading (default: "eager").
+ *                        - 'classes' => classes CSS à ajouter à la balise <img>.
+ *
+ * @return bool|string Retourne le code HTML de l'image responsive, ou une chaîne vide si l'image est invalide.
+ */
 function responsive_image($image, $settings): bool|string
 {
   if (empty($image)) {
