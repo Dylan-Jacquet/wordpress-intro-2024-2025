@@ -180,7 +180,47 @@ register_post_type('travel', [
   'supports' => ['title', 'excerpt', 'editor', 'thumbnail'],
 ]);
 
+/*
+register_taxonomy('travel_type', ['travel'], [
+  'labels' => [
+    'name' => 'Types de voyage',
+    'singular_name' => 'Type de voyage',
+    'menu_name' => 'Types de voyage',
+    'all_items' => 'Tous les types',
+    'edit_item' => 'Modifier le type',
+    'view_item' => 'Voir le type',
+    'update_item' => 'Mettre à jour le type',
+    'add_new_item' => 'Ajouter un nouveau type',
+    'new_item_name' => 'Nom du nouveau type',
+    'search_items' => 'Rechercher un type',
+    'not_found' => 'Aucun type trouvé',
+  ],
+  'description' => 'Types de voyages',
+  'public' => true,
+  'hierarchical' => true,
+  'show_ui' => true,
+  'show_admin_column' => true,
+  'show_tagcloud' => false,
+  'rewrite' => ['slug' => 'type-voyage'],
+]);
+*/
+
 // Ajouter des "catégories" (taxonomies) sur ces post_types :
+
+register_taxonomy('travel_type', ['travel'], [
+  'labels' => [
+    'name' => __hepl('Les types de voyages'),
+    'singular' => __hepl('Type de voyage')
+  ],
+  'description' => 'Types de voyages',
+  'public' => true,
+  'hierarchical' => true,
+  'show_ui' => true,
+  'show_admin_column' => true,
+  'show_tagcloud' => false,
+  'rewrite' => ['slug' => __hepl('type-de-voyage')],
+],
+);
 
 register_taxonomy('course', ['recipe'], [
   'labels' => [
@@ -311,3 +351,5 @@ function create_site_options_page(): void
 }
 
 add_action('acf/init', 'create_site_options_page');
+
+

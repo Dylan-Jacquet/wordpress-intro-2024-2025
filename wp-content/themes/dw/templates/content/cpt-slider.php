@@ -39,5 +39,6 @@ $stage_link = get_field('link');
     <?php endwhile; else: ?>
       <p class="trip__placeholder">Je n'ai pas de voyages récents à montrer pour le moment...</p>
     <?php endif; ?>
+    <?php wp_reset_postdata(); ?>
   </div>
 </section>
