@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'templates/content/stage' ); ?>
-<?php get_template_part( 'templates/content/cpt-slider' ); ?>
+<?php include ('templates/content/stage/stage.php') ?>
+<?php include ('templates/content/flexible.php') ?>
 
 <?php get_footer(); ?>
 

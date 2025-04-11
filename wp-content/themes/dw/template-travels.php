@@ -6,7 +6,7 @@
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $taxonomy = isset($_GET['filter']) ? sanitize_text_field($_GET['filter']) : '';
 $args = [
-  'post_type' => 'travel',
+  'post_type' => 'travel', // ATTENTION changer
   'posts_per_page' => 3,
   'paged' => $paged,
 ];
@@ -14,7 +14,7 @@ $args = [
 if ($taxonomy !== '') {
   $args['tax_query'] = [
     [
-      'taxonomy' => 'travel_type',
+      'taxonomy' => 'travel_type', // ATTENTION changer
       'field'    => 'slug',
       'terms'    => $taxonomy,
     ]
@@ -26,21 +26,21 @@ $query = new WP_Query($args);
 
 <?php
 $terms = get_terms([
-  'taxonomy' => 'travel_type',
+  'taxonomy' => 'travel_type', // ATTENTION changer
   'hide_empty' => false,
 ]);
 
 $current_filter = isset($_GET['filter']) ? sanitize_text_field($_GET['filter']) : '';
 ?>
 
-<div class="">
-  <a href="<?= esc_url(get_permalink()); ?>" class="<?= ($current_filter === '') ? 'active-travel' : ''; ?>">
+<div class="travel__button-container">
+  <a href="<?= esc_url(get_permalink()); ?>" class="travel__button-link <?= ($current_filter === '') ? 'travel__button-link--active' : ''; ?>">
     <?= __('Tout', 'hepl-trad'); ?>
   </a>
 
   <?php foreach ($terms as $term): ?>
     <a href="<?= esc_url(get_permalink()) . '?filter=' . $term->slug; ?>"
-       class="<?= ($current_filter === $term->slug) ? 'active-travel' : ''; ?>">
+       class="travel__button-link <?= ($current_filter === $term->slug) ? 'travel__button-link--active' : ''; ?>">
       <?= esc_html($term->name); ?>
     </a>
   <?php endforeach; ?>
@@ -51,9 +51,11 @@ if ($query->have_posts()) :
   while ($query->have_posts()) : $query->the_post();
     ?>
     <article>
-      <?php $title = get_field('headline', get_the_ID())?>
+      <?php $title = get_field('headline', get_the_ID());
+      $image = get_field('side_image', get_the_ID());
+      ?>
       <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-      <div><?php the_excerpt(); ?></div>
+      <div><?= wp_get_attachment_image(get_field('side_image'), 'travel-side', attr: ['class' => 'travel__img']); ?></div>
     </article>
   <?php
   endwhile;
